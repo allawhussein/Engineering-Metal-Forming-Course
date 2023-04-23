@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Left Side Navigation Bar</title>
+	<style>
+
+		h1, h2, h3, h4, h5, h6 {
+			font-weight: bold;
+		}
+
+		h1 {
+			font-size: 3em;
+		}
+
+		h2 {
+			font-size: 2.25em;
+		}
+
+		h3 {
+			font-size: 1.755em;
+		}
+
+		h4 {
+			font-size: 1.5em;
+		}
+
+		h5 {
+			font-size: 1.245em;
+		}
+
+		h6 {
+			font-size: 1.005em;
+		}
+
+		/* Style the navigation bar */
+		.navbar {
+		  overflow: hidden;
+		  background-color: #f8f8f8;
+		  position: fixed;
+		  top: 0;
+		  left: 0;
+		  width: 260px;
+		  height: 100%;
+		  z-index: 9999;
+		  box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.1);
+		}
+
+		/* Style the links inside the navigation bar */
+		.navbar div {
+		  display: block;
+		  color: #666;
+		  text-align: center;
+		  padding: 16px;
+		  text-decoration: none;
+		  font-size: 14px;
+		  font-weight: 500;
+		  border-bottom: 1px solid #e0e0e0;
+		}
+
+		.select-button div {
+		  display: block;
+		  color: #e0e0e0;
+		  text-align: center;
+		  padding: 16px;
+		  text-decoration: none;
+		  font-size: 14px;
+		  font-weight: 700;
+		  border-bottom: 1px solid #666;
+		}
+
+		/* Add a hover effect to the links */
+		.navbar div:hover {
+		  background-color: #f0f0f0;
+		  color: #333;
+		}
+
+		/* Style the content area */
+		.content {
+		  margin-left: 260px;
+		  padding: 20px;
+		}
+
+		/* Add a shadow to the content area */
+		.content {
+		  box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.1);
+		}
+
+		/* Media query for mobile devices */
+		@media only screen and (max-width: 768px) {
+		  .navbar {
+		    width: 100%;
+		    height: auto;
+		    position: relative;
+		  }
+		  .navbar a {
+		    float: none;
+		    display: block;
+		    text-align: left;
+		  }
+		  .content {
+		    margin-left: 0;
+		  }
+		}
+	</style>
+</head>
+<body>
+
+	<!-- Navigation bar -->
+	<div class="navbar">
+		<div class="button" id="iron_and_steel_production.md">Iron and Steel Production</div>
+		<div class="button" id="metal_casting_fundamentals.md">Metal Casting Fundamentals</div>
+		<div class="button" id="metal_casting_processes.md">Metal Casting Processes</div>
+	</div>
+
+	<!-- Content -->
+	<div id="main" class="content">
+        <!-- Lightweight client-side loader that feature-detects and load polyfills only when necessary -->
+        <script src="https://cdn.jsdelivr.net/npm/@webcomponents/webcomponentsjs@2/webcomponents-loader.min.js"></script>
+
+        <!-- Load the element definition -->
+        <script type="module" src="https://cdn.jsdelivr.net/gh/zerodevx/zero-md@1/src/zero-md.min.js"></script>
+
+        <!-- Simply set the `src` attribute to your MD file and win -->
+        <zero-md id='summary-title' src="not-found.md"></zero-md>
+	</div>
+
+	<script>
+		const buttons = document.querySelectorAll('.button');
+      	buttons.forEach((button) => {
+        	button.addEventListener('click', () => {
+				if (button.id == document.getElementById('summary-title').src) return;
+				const newElement = document.createElement('zero-md');
+				newElement.id = 'summary-title'
+				newElement.setAttribute('src', button.id);
+				document.getElementById('summary-title').replaceWith(newElement);
+        	});
+     	 });
+	</script>
+
+</body>
+</html>
